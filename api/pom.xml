@@ -19,5 +19,4 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <artifactId>toaster-api</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
-
 </project>
