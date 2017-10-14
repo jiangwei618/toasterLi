@@ -13,24 +13,20 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <repository>mvn:org.opendaylight.yangtools/features-yangtools/${yangtools.version}/xml/features</repository>
   <repository>mvn:org.opendaylight.controller/features-mdsal/${mdsal.version}/xml/features</repository>
   <repository>mvn:org.opendaylight.controller/features-restconf/${mdsal.version}/xml/features</repository>
-  <feature name='odl-toaster-api' version='${project.version}' description='OpenDaylight :: toaster :: api'>
+
+  <feature name='jw-odl-toaster' version='${project.version}' description='OpenDaylight :: toaster'>
+    <!--<feature version='${mdsal.version}'>odl-mdsal-broker</feature>-->
+
     <feature version='${yangtools.version}'>odl-yangtools-models</feature>
     <bundle>mvn:org.opendaylight.toaster/toaster-api/${project.version}</bundle>
-  </feature>
-  <feature name='odl-toaster' version='${project.version}' description='OpenDaylight :: toaster'>
-    <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
-    <feature version='${project.version}'>odl-toaster-api</feature>
-    <bundle>mvn:org.opendaylight.toaster/toaster-impl/${project.version}</bundle>
-    <configfile finalname="${configfile.directory}/toaster.xml">mvn:org.opendaylight.toaster/toaster-impl/${project.version}/xml/config</configfile>
-  </feature>
-  <feature name='odl-toaster-rest' version='${project.version}' description='OpenDaylight :: toaster :: REST'>
-    <feature version="${project.version}">odl-toaster</feature>
+
+
     <feature version="${mdsal.version}">odl-restconf</feature>
-  </feature>
-  <feature name='odl-toaster-ui' version='${project.version}' description='OpenDaylight :: toaster :: UI'>
-    <feature version="${project.version}">odl-toaster-rest</feature>
     <feature version="${mdsal.version}">odl-mdsal-apidocs</feature>
     <feature version="${mdsal.version}">odl-mdsal-xsql</feature>
+
+    <bundle>mvn:org.opendaylight.toaster/toaster-impl/${project.version}</bundle>
+    <configfile finalname="${configfile.directory}/toaster.xml">mvn:org.opendaylight.toaster/toaster-impl/${project.version}/xml/config</configfile>
   </feature>
 
 </features>

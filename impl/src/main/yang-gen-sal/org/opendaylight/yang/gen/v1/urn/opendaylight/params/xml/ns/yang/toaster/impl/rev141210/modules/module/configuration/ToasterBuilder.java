@@ -5,6 +5,7 @@ import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import java.util.HashMap;
 import org.opendaylight.yangtools.concepts.Builder;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.toaster.DataBroker;
 import java.util.Collections;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import java.util.Map;
 public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster> {
 
     private Broker _broker;
+    private DataBroker _dataBroker;
 
     Map<java.lang.Class<? extends Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster>>, Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster>> augmentation = Collections.emptyMap();
 
@@ -26,6 +28,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
 
     public ToasterBuilder(Toaster base) {
         this._broker = base.getBroker();
+        this._dataBroker = base.getDataBroker();
         if (base instanceof ToasterImpl) {
             ToasterImpl impl = (ToasterImpl) base;
             if (!impl.augmentation.isEmpty()) {
@@ -45,6 +48,10 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         return _broker;
     }
     
+    public DataBroker getDataBroker() {
+        return _dataBroker;
+    }
+    
     @SuppressWarnings("unchecked")
     public <E extends Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster>> E getAugmentation(java.lang.Class<E> augmentationType) {
         if (augmentationType == null) {
@@ -55,6 +62,11 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
 
     public ToasterBuilder setBroker(Broker value) {
         this._broker = value;
+        return this;
+    }
+    
+    public ToasterBuilder setDataBroker(DataBroker value) {
+        this._dataBroker = value;
         return this;
     }
     
@@ -89,11 +101,13 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         }
 
         private final Broker _broker;
+        private final DataBroker _dataBroker;
 
         private Map<java.lang.Class<? extends Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster>>, Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.Toaster>> augmentation = Collections.emptyMap();
 
         private ToasterImpl(ToasterBuilder base) {
             this._broker = base.getBroker();
+            this._dataBroker = base.getDataBroker();
             switch (base.augmentation.size()) {
             case 0:
                 this.augmentation = Collections.emptyMap();
@@ -110,6 +124,11 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         @Override
         public Broker getBroker() {
             return _broker;
+        }
+        
+        @Override
+        public DataBroker getDataBroker() {
+            return _dataBroker;
         }
         
         @SuppressWarnings("unchecked")
@@ -133,6 +152,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
             final int prime = 31;
             int result = 1;
             result = prime * result + ((_broker == null) ? 0 : _broker.hashCode());
+            result = prime * result + ((_dataBroker == null) ? 0 : _dataBroker.hashCode());
             result = prime * result + ((augmentation == null) ? 0 : augmentation.hashCode());
         
             hash = result;
@@ -157,6 +177,13 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
                     return false;
                 }
             } else if(!_broker.equals(other.getBroker())) {
+                return false;
+            }
+            if (_dataBroker == null) {
+                if (other.getDataBroker() != null) {
+                    return false;
+                }
+            } else if(!_dataBroker.equals(other.getDataBroker())) {
                 return false;
             }
             if (getClass() == obj.getClass()) {
@@ -197,6 +224,15 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
                 }
                 builder.append("_broker=");
                 builder.append(_broker);
+             }
+            if (_dataBroker != null) {
+                if (first) {
+                    first = false;
+                } else {
+                    builder.append(", ");
+                }
+                builder.append("_dataBroker=");
+                builder.append(_dataBroker);
              }
             if (first) {
                 first = false;

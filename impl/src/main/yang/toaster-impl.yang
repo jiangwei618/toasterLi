@@ -3,8 +3,9 @@ module toaster-impl {
     namespace "urn:opendaylight:params:xml:ns:yang:toaster:impl";
     prefix "toaster-impl";
 
+???//????????revision???prefix???????????????
     import config { prefix config; revision-date 2013-04-05; }
-    import opendaylight-md-sal-binding { prefix md-sal-binding; revision-date 2013-10-28;}
+    import opendaylight-md-sal-binding { prefix mdsal; revision-date 2013-10-28; }
 
     description
         "Service definition for toaster project";
@@ -26,7 +27,18 @@ module toaster-impl {
                 uses config:service-ref {
                     refine type {
                         mandatory true;
-                        config:required-identity md-sal-binding:binding-broker-osgi-registry;
+                        //?????????mdsal???import????prefix????
+                        config:required-identity mdsal:binding-broker-osgi-registry;
+                    }
+                }
+            }
+
+            //wires in the data-broker service
+            container data-broker {
+                uses config:service-ref {
+                    refine type {
+                        mandatory false;
+                        config:required-identity mdsal:binding-async-data-broker;
                     }
                 }
             }

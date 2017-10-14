@@ -7,6 +7,7 @@
  */
 package org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210;
 
+import org.opendaylight.controller.md.sal.binding.api.DataBroker;
 import org.opendaylight.toaster.impl.ToasterProvider;
 
 public class ToasterModule extends org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.AbstractToasterModule {
@@ -25,8 +26,16 @@ public class ToasterModule extends org.opendaylight.yang.gen.v1.urn.opendaylight
 
     @Override
     public java.lang.AutoCloseable createInstance() {
+        //创建toaster实例
         ToasterProvider provider = new ToasterProvider();
+
+        //服务注册
         getBrokerDependency().registerProvider(provider);
+
+        //设置databroker
+        DataBroker dataBrokerService = getDataBrokerDependency();
+        provider.setDataProvider(dataBrokerService);
+
         return provider;
     }
 

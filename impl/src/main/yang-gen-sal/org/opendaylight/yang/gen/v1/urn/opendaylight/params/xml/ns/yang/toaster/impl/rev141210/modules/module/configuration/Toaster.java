@@ -3,6 +3,7 @@ import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.toaster.Broker;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.controller.config.rev130405.modules.module.Configuration;
 import org.opendaylight.yangtools.yang.common.QName;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.toaster.DataBroker;
 import org.opendaylight.yangtools.yang.binding.Augmentable;
 
 
@@ -12,6 +13,21 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  * &lt;pre&gt;
  * case toaster {
  *     container broker {
+ *         leaf type {
+ *             type leafref;
+ *         }
+ *         leaf name {
+ *             type leafref;
+ *         }
+ *         uses service-ref {
+ *             refine (urn:opendaylight:params:xml:ns:yang:toaster:impl?revision=2014-12-10)type {
+ *                 leaf type {
+ *                     type leafref;
+ *                 }
+ *             }
+ *         }
+ *     }
+ *     container data-broker {
  *         leaf type {
  *             type leafref;
  *         }
@@ -44,6 +60,8 @@ public interface Toaster
     public static final QName QNAME = org.opendaylight.yangtools.yang.common.QName.cachedReference(org.opendaylight.yangtools.yang.common.QName.create("urn:opendaylight:params:xml:ns:yang:toaster:impl","2014-12-10","toaster"));
 
     Broker getBroker();
+    
+    DataBroker getDataBroker();
 
 }
 
