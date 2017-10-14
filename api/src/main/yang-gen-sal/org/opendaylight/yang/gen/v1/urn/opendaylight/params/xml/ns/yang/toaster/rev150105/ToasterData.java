@@ -44,6 +44,28 @@ import org.opendaylight.yangtools.yang.binding.DataRoot;
  *             "White bread.";
  *         status CURRENT;
  *     }
+ *
+ *     rpc cancel-toast {
+ *         "Stop making toast, if any is being made.
+ *                           A 'resource-denied' error will be returned
+ *                           if the toaster service is disabled.";
+ *         status CURRENT;
+ *     }
+ *     rpc make-toast {
+ *         "Make some toast. The toastDone notification will be sent when the toast is finished.
+ *                         An 'in-use' error will be returned if toast is already being made. A 'resource-denied' error will
+ *                         be returned if the toaster service is disabled.";
+ *         input {
+ *             leaf toasterDoneness {
+ *                 type uint32;
+ *             }
+ *             leaf toasterToastType {
+ *                 type identityref;
+ *             }
+ *         }
+ *         
+ *         status CURRENT;
+ *     }
  * }
  * &lt;/pre&gt;
  *
