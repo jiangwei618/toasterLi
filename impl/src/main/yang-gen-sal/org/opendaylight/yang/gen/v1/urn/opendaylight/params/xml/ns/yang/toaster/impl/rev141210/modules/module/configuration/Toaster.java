@@ -1,4 +1,5 @@
 package org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration;
+import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.toaster.RpcRegistry;
 import org.opendaylight.yangtools.yang.binding.DataObject;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.impl.rev141210.modules.module.configuration.toaster.Broker;
 import org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.controller.config.rev130405.modules.module.Configuration;
@@ -42,6 +43,21 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  *             }
  *         }
  *     }
+ *     container rpc-registry {
+ *         leaf type {
+ *             type leafref;
+ *         }
+ *         leaf name {
+ *             type leafref;
+ *         }
+ *         uses service-ref {
+ *             refine (urn:opendaylight:params:xml:ns:yang:toaster:impl?revision=2014-12-10)type {
+ *                 leaf type {
+ *                     type leafref;
+ *                 }
+ *             }
+ *         }
+ *     }
  * }
  * &lt;/pre&gt;
  * The schema path to identify an instance is
@@ -62,6 +78,8 @@ public interface Toaster
     Broker getBroker();
     
     DataBroker getDataBroker();
+    
+    RpcRegistry getRpcRegistry();
 
 }
 

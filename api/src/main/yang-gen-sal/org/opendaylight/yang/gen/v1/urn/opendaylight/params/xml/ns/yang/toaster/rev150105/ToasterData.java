@@ -11,6 +11,7 @@ import org.opendaylight.yangtools.yang.binding.DataRoot;
  *     namespace "urn:opendaylight:params:xml:ns:yang:toaster";
  *     prefix "toaster";
  *
+ *     import ietf-inet-types { prefix "ietf"; }
  *     revision 2015-01-05 {
  *         description "";
  *     }
@@ -24,6 +25,9 @@ import org.opendaylight.yangtools.yang.binding.DataRoot;
  *         }
  *         leaf toasterStatus {
  *             type enumeration;
+ *         }
+ *         leaf darknessFactor {
+ *             type uint32;
  *         }
  *     }
  *

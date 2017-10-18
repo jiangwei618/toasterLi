@@ -21,6 +21,9 @@ import org.opendaylight.yangtools.yang.binding.Augmentable;
  *     leaf toasterStatus {
  *         type enumeration;
  *     }
+ *     leaf darknessFactor {
+ *         type uint32;
+ *     }
  * }
  * &lt;/pre&gt;
  * The schema path to identify an instance is
@@ -108,6 +111,13 @@ public interface Toaster
      *
      */
     ToasterStatus getToasterStatus();
+    
+    /**
+     * The darkness factor. Basically, the number of ms to multiple the doneness value 
+     * by.
+     *
+     */
+    java.lang.Long getDarknessFactor();
 
 }
 

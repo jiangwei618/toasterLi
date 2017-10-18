@@ -15,9 +15,9 @@ and is available at http://www.eclipse.org/legal/epl-v10.html
   <repository>mvn:org.opendaylight.controller/features-restconf/${mdsal.version}/xml/features</repository>
 
   <feature name='jw-odl-toaster' version='${project.version}' description='OpenDaylight :: toaster'>
-    <!--<feature version='${mdsal.version}'>odl-mdsal-broker</feature>-->
+    <feature version='${mdsal.version}'>odl-mdsal-broker</feature>
 
-    <feature version='${yangtools.version}'>odl-yangtools-models</feature>
+    <!--<feature version='${yangtools.version}'>odl-yangtools-models</feature>-->
     <bundle>mvn:org.opendaylight.toaster/toaster-api/${project.version}</bundle>
 
 

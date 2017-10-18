@@ -21,6 +21,7 @@ import java.util.Map;
  */
 public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster> {
 
+    private java.lang.Long _darknessFactor;
     private DisplayString _toasterManufacturer;
     private static void check_toasterManufacturerLength(final String value) {
         final int length = value.length();
@@ -45,6 +46,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
     }
 
     public ToasterBuilder(Toaster base) {
+        this._darknessFactor = base.getDarknessFactor();
         this._toasterManufacturer = base.getToasterManufacturer();
         this._toasterModelNumber = base.getToasterModelNumber();
         this._toasterStatus = base.getToasterStatus();
@@ -63,6 +65,10 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
     }
 
 
+    public java.lang.Long getDarknessFactor() {
+        return _darknessFactor;
+    }
+    
     public DisplayString getToasterManufacturer() {
         return _toasterManufacturer;
     }
@@ -83,6 +89,30 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         return (E) augmentation.get(augmentationType);
     }
 
+    private static void checkDarknessFactorRange(final long value) {
+        if (value >= 0L && value <= 4294967295L) {
+            return;
+        }
+        throw new IllegalArgumentException(String.format("Invalid range: %s, expected: [[0‥4294967295]].", value));
+    }
+    
+    public ToasterBuilder setDarknessFactor(java.lang.Long value) {
+        if (value != null) {
+            checkDarknessFactorRange(value);
+        }
+        this._darknessFactor = value;
+        return this;
+    }
+    /**
+     * @deprecated This method is slated for removal in a future release. See BUG-1485 for details.
+     */
+    @Deprecated
+    public static List<Range<BigInteger>> _darknessFactor_range() {
+        final List<Range<BigInteger>> ret = new java.util.ArrayList<>(1);
+        ret.add(Range.closed(BigInteger.ZERO, BigInteger.valueOf(4294967295L)));
+        return ret;
+    }
+    
     public ToasterBuilder setToasterManufacturer(DisplayString value) {
         if (value != null) {
             check_toasterManufacturerLength(value.getValue());
@@ -152,6 +182,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
             return org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster.class;
         }
 
+        private final java.lang.Long _darknessFactor;
         private final DisplayString _toasterManufacturer;
         private final DisplayString _toasterModelNumber;
         private final ToasterStatus _toasterStatus;
@@ -159,6 +190,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         private Map<java.lang.Class<? extends Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster>>, Augmentation<org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster>> augmentation = Collections.emptyMap();
 
         private ToasterImpl(ToasterBuilder base) {
+            this._darknessFactor = base.getDarknessFactor();
             this._toasterManufacturer = base.getToasterManufacturer();
             this._toasterModelNumber = base.getToasterModelNumber();
             this._toasterStatus = base.getToasterStatus();
@@ -175,6 +207,11 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
             }
         }
 
+        @Override
+        public java.lang.Long getDarknessFactor() {
+            return _darknessFactor;
+        }
+        
         @Override
         public DisplayString getToasterManufacturer() {
             return _toasterManufacturer;
@@ -210,6 +247,7 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
         
             final int prime = 31;
             int result = 1;
+            result = prime * result + ((_darknessFactor == null) ? 0 : _darknessFactor.hashCode());
             result = prime * result + ((_toasterManufacturer == null) ? 0 : _toasterManufacturer.hashCode());
             result = prime * result + ((_toasterModelNumber == null) ? 0 : _toasterModelNumber.hashCode());
             result = prime * result + ((_toasterStatus == null) ? 0 : _toasterStatus.hashCode());
@@ -232,6 +270,13 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
                 return false;
             }
             org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster other = (org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105.Toaster)obj;
+            if (_darknessFactor == null) {
+                if (other.getDarknessFactor() != null) {
+                    return false;
+                }
+            } else if(!_darknessFactor.equals(other.getDarknessFactor())) {
+                return false;
+            }
             if (_toasterManufacturer == null) {
                 if (other.getToasterManufacturer() != null) {
                     return false;
@@ -283,6 +328,15 @@ public class ToasterBuilder implements Builder <org.opendaylight.yang.gen.v1.urn
             java.lang.StringBuilder builder = new java.lang.StringBuilder ("Toaster [");
             boolean first = true;
         
+            if (_darknessFactor != null) {
+                if (first) {
+                    first = false;
+                } else {
+                    builder.append(", ");
+                }
+                builder.append("_darknessFactor=");
+                builder.append(_darknessFactor);
+             }
             if (_toasterManufacturer != null) {
                 if (first) {
                     first = false;

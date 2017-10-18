@@ -3,6 +3,11 @@ module toaster {
     namespace "urn:opendaylight:params:xml:ns:yang:toaster";
     prefix "toaster";
 
+
+    import ietf-inet-types { prefix ietf; revision-date 2010-09-24; }
+
+
+
     revision "2015-01-05" {
         description "Initial revision of toaster model";
     }
@@ -80,6 +85,14 @@ module toaster {
             description
               "This variable indicates the current state of  the toaster.";
           }
+
+          leaf darknessFactor {
+            type uint32;
+            config true;
+            default 1000;
+            description
+              "The darkness factor. Basically, the number of ms to multiple the doneness value by.";
+          }
         }  // container toaster
 
 
@@ -88,6 +101,7 @@ module toaster {
            //on the data model. In this case the initating action takes two optional inputs (because default value is defined)
            //QUESTION: Am I correct that the inputs are optional because they have defaults defined? The REST call doesn't seem to account for this.
            rpc make-toast {
+
              description
                "Make some toast. The toastDone notification will be sent when the toast is finished.
                 An 'in-use' error will be returned if toast is already being made. A 'resource-denied' error will
@@ -95,6 +109,8 @@ module toaster {
 
              input {
                leaf toasterDoneness {
+                 config true;
+
                  type uint32 {
                    range "1 .. 10";
                  }
@@ -105,6 +121,7 @@ module toaster {
                }
 
                leaf toasterToastType {
+                 config true;
                  type identityref {
                    base toast-type;
                  }
@@ -123,4 +140,9 @@ module toaster {
                   A 'resource-denied' error will be returned
                   if the toaster service is disabled.";
            }  // rpc cancel-toast
+
+
+
+
+
 }

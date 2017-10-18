@@ -1,7 +1,8 @@
 package org.opendaylight.yang.gen.v1.urn.opendaylight.params.xml.ns.yang.toaster.rev150105 ;
 import org.opendaylight.yangtools.yang.binding.YangModuleInfo;
 import java.util.Set;
-import java.util.Collections;
+import java.util.HashSet;
+import com.google.common.collect.ImmutableSet;
 import java.io.InputStream;
 import java.io.IOException;
 public final class $YangModuleInfoImpl implements YangModuleInfo {
@@ -20,7 +21,9 @@ public final class $YangModuleInfoImpl implements YangModuleInfo {
     }
 
     private $YangModuleInfoImpl() {
-        importedModules = Collections.emptySet();
+        Set<YangModuleInfo> set = new HashSet<>();
+        set.add(org.opendaylight.yang.gen.v1.urn.ietf.params.xml.ns.yang.ietf.inet.types.rev100924.$YangModuleInfoImpl.getInstance());
+        importedModules = ImmutableSet.copyOf(set);
     
         InputStream stream = $YangModuleInfoImpl.class.getResourceAsStream(resourcePath);
         if (stream == null) {

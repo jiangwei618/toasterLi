@@ -3,7 +3,6 @@ module toaster-impl {
     namespace "urn:opendaylight:params:xml:ns:yang:toaster:impl";
     prefix "toaster-impl";
 
-???//????????revision???prefix???????????????
     import config { prefix config; revision-date 2013-04-05; }
     import opendaylight-md-sal-binding { prefix mdsal; revision-date 2013-10-28; }
 
@@ -42,6 +41,16 @@ module toaster-impl {
                     }
                 }
             }
+
+            //Wires dependent services into this class - in this case the RPC registry service
+             container rpc-registry {
+                 uses config:service-ref {
+                     refine type {
+                         mandatory true;
+                         config:required-identity mdsal:binding-rpc-registry;
+                     }
+                 }
+             }
         }
     }
 }
